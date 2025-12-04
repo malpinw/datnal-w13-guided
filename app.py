@@ -1,31 +1,31 @@
-import streamlit as st
-import pandas as pd
 import numpy as np
+import streamlit as st
+
 from prediction import predict
 
-st.title('Classifying Iris Flowers')
-st.markdown('Toy model to play to classify iris flowers into \
-    (setosa, versicolor, virginica) based on their sepal/petal \
-    and length/width.')
+st.title("Classifying Iris Flowers")
+st.markdown(
+    "Toy model to classify iris flowers into setosa, versicolor, or virginica "
+    "based on their sepal and petal dimensions."
+)
 
 st.header("Plant Features")
 col1, col2 = st.columns(2)
 
 with col1:
     st.text("Sepal characteristics")
-    sepal_l = st.slider('Sepal lenght (cm)', 1.0, 8.0, 0.5)
-    sepal_w = st.slider('Sepal width (cm)', 2.0, 4.4, 0.5)
+    sepal_l = st.slider("Sepal length (cm)", 4.0, 8.5, 5.8, step=0.1)
+    sepal_w = st.slider("Sepal width (cm)", 2.0, 4.5, 3.0, step=0.1)
 
 with col2:
-    st.text("Pepal characteristics")
-    petal_l = st.slider('Petal lenght (cm)', 1.0, 7.0, 0.5)
-    petal_w = st.slider('Petal width (cm)', 0.1, 2.5, 0.5)
+    st.text("Petal characteristics")
+    petal_l = st.slider("Petal length (cm)", 1.0, 7.5, 4.35, step=0.1)
+    petal_w = st.slider("Petal width (cm)", 0.1, 2.6, 1.3, step=0.1)
 
-st.text('')
+st.write("")
 if st.button("Predict type of Iris"):
-    result = predict(
-        np.array([[sepal_l, sepal_w, petal_l, petal_w]]))
-    st.text(result[0])
+    features = np.array([[sepal_l, sepal_w, petal_l, petal_w]])
+    result = predict(features)
+    st.success(f"Predicted species: {result[0]}")
 
-st.text('')
-st.text('')
+st.write("")
