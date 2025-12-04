@@ -8,8 +8,8 @@ import joblib
 seed = 42
 
 # Read original dataset
-# Pastikan Anda memiliki folder 'data' dan file 'iris.csv' di dalamnya
-iris_df = pd.read_csv("data/iris.csv")
+# Pastikan Anda memiliki folder 'data' dan file 'Iris.csv' di dalamnya
+iris_df = pd.read_csv("data/Iris.csv")
 iris_df.sample(frac=1, random_state=seed)
 
 # selecting features and target data
